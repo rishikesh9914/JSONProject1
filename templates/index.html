@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Project With Naveen</title>
+  </head>
+  <body>
+  <style>
+      #title
+      {
+          font-size: 50px;
+          text-align: center;
+          font-family: Arial;
+          background: black;
+          color: red;
+      }
+
+      .main
+      {
+          font-family: Arial;
+          font-size: 20px;
+
+          background: cyan;
+          color: black;
+      }
+  </style>
+
+       {% if error %}
+           <h1>  {{ error }}  </h1>
+
+       {% endif %}
+
+       {% if information %}
+
+           <table align="center" border="2" width="1000">
+           <tr><th id="title" colspan="3">Covid-19 Information - India</th></tr>
+           <tr>
+               <th class="main">Total Cases</th>
+               <th class="main">Confirmed</th>
+               <th class="main">Discharged</th>
+           </tr>
+           <tr>
+               <th class="main">{{ information.data.summary.total }}</th>
+               <th class="main">{{ information.data.summary.confirmedCasesIndian }}</th>
+               <th class="main">{{ information.data.summary.discharged }}</th>
+           </tr>
+
+           <tr>
+               <th style="font-size: 25px; text-align: center; color: red" colspan="3">Statewise Information</th>
+           </tr>
+
+           <tr>
+               <th class="main">Total Cases</th>
+               <th class="main">Confirmed</th>
+               <th class="main">Discharged</th>
+           </tr>
+
+           {% for x in information.data.regional %}
+           <tr>
+               <th> {{ x.loc }}</th>
+               <th> {{ x.confirmedCasesIndian }}</th>
+               <th> {{ x.discharged }}</th>
+           </tr>
+               {% endfor %}
+           </table>
+           {{ data }}
+
+       {% endif %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
